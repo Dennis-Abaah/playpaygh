@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayPay GH - Earn Cedis Gaming</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'cedi-green': '#00C853',
+                        'cedi-dark': '#1B5E20',
+                        'ghana-gold': '#FFD700',
+                        'dark-bg': '#0f172a',
+                        'card-bg': '#1e293b'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            padding-bottom: 80px; /* Space for mobile nav */
+            scroll-behavior: smooth;
+        }
+        
+        .money-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, #00C853 0%, #009624 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 200, 83, 0.3);
+        }
+
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Desktop Navigation (Hidden on Mobile) -->
+    <nav class="hidden md:flex justify-between items-center p-6 glass-effect sticky top-0 z-40">
+        <div class="text-2xl font-black text-white tracking-tighter">
+            <span class="text-ghana-gold"><i class="fas fa-gamepad"></i> Play</span>Pay<span class="text-xs align-top text-cedi-green">GH</span>
+        </div>
+        <div class="space-x-8 font-semibold text-gray-300">
+            <a href="#home" class="hover:text-ghana-gold transition">Home</a>
+            <a href="#games" class="hover:text-ghana-gold transition">Games</a>
+            <a href="#payouts" class="hover:text-ghana-gold transition">Payouts</a>
+            <a href="#about" class="hover:text-ghana-gold transition">About Us</a>
+        </div>
+        <button onclick="openSignup()" class="bg-ghana-gold text-black font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition transform hover:scale-105">
+            Sign Up
+        </button>
+    </nav>
+
+    <!-- Mobile Top Bar -->
+    <div class="md:hidden flex justify-between items-center p-4 glass-effect sticky top-0 z-40">
+        <div class="text-xl font-black text-white">
+            <span class="text-ghana-gold">Play</span>Pay<span class="text-cedi-green">GH</span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full border border-yellow-600/30">
+            <i class="fas fa-wallet text-ghana-gold"></i>
+            <span class="text-sm font-bold text-white">GH₵ 0.00</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative overflow-hidden py-12 md:py-20 px-4 text-center">
+        <!-- Floating Elements Background -->
+        <div class="absolute top-10 left-10 text-6xl opacity-10 animate-float">₵</div>
+        <div class="absolute bottom-10 right-10 text-8xl opacity-10 animate-float" style="animation-delay: 1s;">₵</div>
+        <div class="absolute top-20 right-20 text-4xl opacity-10 animate-pulse-slow">🎮</div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full bg-green-900/50 border border-green-500/30 text-green-400 text-sm font-bold uppercase tracking-wide">
+                🇬🇭 #1 Paying Game Platform in Ghana
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                Play Games. <br>
+                <span class="money-gradient">Get Paid in Cedis.</span>
+            </h1>
+            <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
+                Test the latest mobile games from top creators and get paid directly to your Mobile Money wallet. No complex points—just straight Ghana Cedis.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#games" class="btn-gradient text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg flex items-center justify-center gap-2">
+                    <i class="fas fa-play-circle"></i> Start Earning GH₵
+                </a>
+                <a href="#payouts" class="bg-slate-800 border border-slate-600 text-white font-bold py-4 px-10 rounded-xl text-lg hover:bg-slate-700 transition flex items-center justify-center gap-2">
+                    <i class="fas fa-file-invoice-dollar"></i> Withdrawal Proof
+                </a>
+            </div>
+            
+            <div class="mt-8 flex justify-center items-center gap-6 text-gray-500 text-sm">
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-cedi-green"></i> MTN MoMo</span>
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-cedi-green"></i> Vodafone Cash</span>
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-cedi-green"></i> AirtelTigo</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Games Grid Section -->
+    <section id="games" class="py-12 px-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-white"><i class="fas fa-fire text-orange-500 mr-2"></i> Available Tasks</h2>
+            <span class="text-ghana-gold font-semibold text-sm md:text-base animate-pulse">Live: 45 Players Online</span>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="game-container">
+            <!-- Game cards injected via JS -->
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="bg-slate-800/50 py-16 px-4 mt-8 border-y border-slate-700">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6 text-ghana-gold">About PlayPay GH</h2>
+            <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                We bridge the gap between Ghanaian gamers and international game developers. Creators need real people to test their levels, find bugs, and improve gameplay. We partner with them to pay you in <strong>Real Ghana Cedis</strong> for your time.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700">
+                    <div class="text-4xl text-cedi-green mb-3"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="font-bold text-xl mb-2">1. Sign Up</h3>
+                    <p class="text-sm text-gray-400">Create a free account in seconds. No deposit required.</p>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700">
+                    <div class="text-4xl text-ghana-gold mb-3"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="font-bold text-xl mb-2">2. Play Games</h3>
+                    <p class="text-sm text-gray-400">Choose a game, complete the level, or find bugs.</p>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700">
+                    <div class="text-4xl text-blue-400 mb-3"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="font-bold text-xl mb-2">3. Withdraw</h3>
+                    <p class="text-sm text-gray-400">Cash out instantly to your Mobile Money wallet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Withdrawals (Testimonials) -->
+    <section id="payouts" class="py-16 px-4 max-w-5xl mx-auto">
+        <h2 class="text-center text-3xl font-bold mb-10">Recent <span class="text-cedi-green">GH₵ Payouts</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Comment 1 -->
+            <div class="bg-card-bg p-4 rounded-xl flex items-start gap-4 border border-slate-700">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Kwame" alt="User" class="w-12 h-12 rounded-full bg-slate-700">
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-bold text-white">Kwame Mensah</h4>
+                        <span class="text-xs text-gray-500">2 mins ago</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">Just received <span class="text-ghana-gold font-bold">GH₵ 150.00</span> for testing 'Cyber Racer'. MoMo hit instantly! 🚀</p>
+                    <div class="mt-2 text-xs text-cedi-green flex items-center gap-1">
+                        <i class="fas fa-check-circle"></i> Verified Withdrawal
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 2 -->
+            <div class="bg-card-bg p-4 rounded-xl flex items-start gap-4 border border-slate-700">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ama" alt="User" class="w-12 h-12 rounded-full bg-slate-700">
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-bold text-white">Ama Serwaa</h4>
+                        <span class="text-xs text-gray-500">15 mins ago</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">I didn't believe it at first, but I just cashed out <span class="text-ghana-gold font-bold">GH₵ 75.00</span>. God bless PlayPay!</p>
+                    <div class="mt-2 text-xs text-cedi-green flex items-center gap-1">
+                        <i class="fas fa-check-circle"></i> Verified Withdrawal
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="bg-card-bg p-4 rounded-xl flex items-start gap-4 border border-slate-700">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Kojo" alt="User" class="w-12 h-12 rounded-full bg-slate-700">
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-bold text-white">Kojo B.</h4>
+                        <span class="text-xs text-gray-500">1 hour ago</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">Easy money. Played for 30 mins and made <span class="text-ghana-gold font-bold">GH₵ 45.00</span>. Lunch money sorted. 🍛</p>
+                    <div class="mt-2 text-xs text-cedi-green flex items-center gap-1">
+                        <i class="fas fa-check-circle"></i> Verified Withdrawal
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 4 -->
+            <div class="bg-card-bg p-4 rounded-xl flex items-start gap-4 border border-slate-700">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Fatima" alt="User" class="w-12 h-12 rounded-full bg-slate-700">
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-bold text-white">Fatima Y.</h4>
+                        <span class="text-xs text-gray-500">3 hours ago</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">Finally a site that pays in Cedis and not PayPal. Thank you guys! <span class="text-ghana-gold font-bold">GH₵ 200.00</span> secured.</p>
+                    <div class="mt-2 text-xs text-cedi-green flex items-center gap-1">
+                        <i class="fas fa-check-circle"></i> Verified Withdrawal
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center border-t border-slate-800 mb-16 md:mb-0">
+        <div class="text-2xl font-black text-white tracking-tighter mb-4">
+            <span class="text-ghana-gold">Play</span>Pay<span class="text-cedi-green">GH</span>
+        </div>
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp text-xl"></i></a>
+        </div>
+        <p class="text-gray-600 text-sm">&copy; 2024 PlayPay Ghana. All rights reserved.</p>
+        <p class="text-gray-700 text-xs mt-2">Payouts processed via MTN Mobile Money, Vodafone Cash, and AT Money.</p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation (Fixed) -->
+    <nav class="md:hidden fixed bottom-0 w-full bg-slate-900 border-t border-slate-700 flex justify-around p-3 z-50 pb-safe">
+        <a href="#home" class="flex flex-col items-center text-ghana-gold hover:text-white transition">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs font-medium">Home</span>
+        </a>
+        <button onclick="showModal('withdraw')" class="flex flex-col items-center text-gray-400 hover:text-cedi-green transition">
+            <div class="bg-slate-800 p-2 rounded-full -mt-8 border border-cedi-green shadow-lg shadow-green-900/50">
+                <i class="fas fa-money-bill-wave text-xl text-cedi-green"></i>
+            </div>
+            <span class="text-xs font-medium mt-1">Withdraw</span>
+        </button>
+        <button onclick="openSignup()" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+            <i class="fas fa-user-plus text-xl mb-1"></i>
+            <span class="text-xs font-medium">Sign Up</span>
+        </button>
+    </nav>
+
+    <!-- Dynamic Modal -->
+    <div id="modal" class="fixed inset-0 z-50 hidden flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative bg-slate-800 p-8 rounded-2xl w-11/12 max-w-md border border-slate-600 shadow-2xl animate-float">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="text-center">
+                <div id="modal-icon" class="text-5xl mb-4 text-ghana-gold"></div>
+                <h3 id="modal-title" class="text-2xl font-bold text-white mb-2"></h3>
+                <div id="modal-content" class="text-gray-400 mb-6"></div>
+                <div id="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game Data Configuration (Lowered Prices: 5-40 Cedis)
+        const games = [
+            { title: "Cyber Racer X", pay: 15, category: "Racing" },
+            { title: "Jungle Jewel Quest", pay: 8, category: "Puzzle" },
+            { title: "Zombie Defense 3D", pay: 25, category: "Action" },
+            { title: "Accra Traffic Sim", pay: 35, category: "Simulation" },
+            { title: "Golden Penalty Kick", pay: 12, category: "Sports" },
+            { title: "Space Mining Tycoon", pay: 40, category: "Strategy" },
+            { title: "Candy Crush Clone", pay: 5, category: "Casual" },
+            { title: "War of Empires", pay: 38, category: "MMO" },
+            { title: "Oware Master", pay: 20, category: "Board" },
+            { title: "Sniper Elite: Ghana", pay: 30, category: "Shooter" }
+        ];
+
+        const container = document.getElementById('game-container');
+
+        // Generate Cards
+        games.forEach((game, index) => {
+            // Using picsum with specific seed to keep images consistent across reloads but random per card
+            const imageUrl = `https://picsum.photos/seed/${game.title.replace(/\s/g, '')}/400/250`;
+            
+            const cardHTML = `
+                <div class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-slate-700 group relative">
+                    <!-- Image Area -->
+                    <div class="relative overflow-hidden h-48">
+                        <img src="${imageUrl}" alt="${game.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-xs px-2 py-1 rounded text-white border border-white/20">
+                            ${game.category}
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">${game.title}</h3>
+                        <p class="text-gray-400 text-xs mb-4">Test gameplay & report bugs</p>
+                        
+                        <div class="flex items-end justify-between">
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase font-bold">Earn Amount</p>
+                                <p class="text-2xl font-black text-ghana-gold">GH₵ ${game.pay}.00</p>
+                            </div>
+                        </div>
+
+                        <!-- Manual Link Area -->
+                        <div class="mt-4 pt-4 border-t border-slate-700">
+                            <!-- PASTE YOUR LINK IN THE HREF BELOW -->
+                            <a href="#" class="btn-gradient w-full block text-center py-3 rounded-xl font-bold text-white shadow-lg relative overflow-hidden">
+                                <span class="relative z-10">EARN GH₵ ${game.pay} NOW</span>
+                                <div class="absolute inset-0 bg-white/20 transform -translate-x-full hover:translate-x-0 transition duration-300"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+
+        // Helper to grab elements
+        const modal = document.getElementById('modal');
+        const icon = document.getElementById('modal-icon');
+        const title = document.getElementById('modal-title');
+        const content = document.getElementById('modal-content');
+        const footer = document.getElementById('modal-footer');
+
+        function openSignup() {
+            modal.classList.remove('hidden');
+            icon.innerHTML = '<i class="fas fa-user-plus"></i>';
+            title.innerText = 'Create Account';
+            
+            // Inject Form HTML
+            content.innerHTML = `
+                <form onsubmit="handleSignup(event)" class="text-left space-y-4">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold uppercase mb-1">Username</label>
+                        <input type="text" id="username" required class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:border-cedi-green outline-none focus:ring-1 focus:ring-cedi-green transition" placeholder="e.g. KofiGamer">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold uppercase mb-1">Mobile Money Number</label>
+                        <input type="tel" required class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:border-cedi-green outline-none focus:ring-1 focus:ring-cedi-green transition" placeholder="024 XXX XXXX">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold uppercase mb-1">Password</label>
+                        <input type="password" required class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:border-cedi-green outline-none focus:ring-1 focus:ring-cedi-green transition" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-ghana-gold text-black font-black text-lg hover:bg-yellow-400 transition transform hover:scale-[1.02] shadow-lg mt-2">
+                        JOIN & START EARNING
+                    </button>
+                </form>
+            `;
+            footer.innerHTML = `<p class="text-xs text-gray-500 mt-4">By signing up, you agree to our Terms of Service.</p>`;
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            
+            // Show Welcome Message
+            icon.innerHTML = '<i class="fas fa-check-circle text-cedi-green text-6xl"></i>';
+            title.innerHTML = `<span class="text-3xl">WELCOME<br><span class="text-ghana-gold">${username}</span>!</span>`;
+            content.innerHTML = `
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 mt-4">
+                    <p class="text-lg text-white">Your account has been created successfully.</p>
+                    <p class="text-cedi-green font-bold mt-2">Start playing games to earn Cedis now!</p>
+                </div>
+            `;
+            footer.innerHTML = `
+                <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-600 mt-4">
+                    Let's Go!
+                </button>
+            `;
+        }
+
+        function showModal(type) {
+            modal.classList.remove('hidden');
+
+            if (type === 'withdraw') {
+                icon.innerHTML = '<i class="fas fa-mobile-alt"></i>';
+                title.innerText = 'Withdraw Funds';
+                content.innerText = 'Please sign in to access your Mobile Money wallet balance and request a withdrawal.';
+                footer.innerHTML = `<button onclick="closeModal()" class="w-full py-3 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-600">Close</button>`;
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
